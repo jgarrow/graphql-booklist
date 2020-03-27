@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
-import { getAuthorsQuery, addBookMutation } from "../queries/queries";
+import {
+    getAuthorsQuery,
+    getBooksQuery,
+    addBookMutation
+} from "../queries/queries";
 
 const AddBookForm = () => {
-    const [inputValues, setInputValues] = useState({
+    const initialValues = {
         name: "",
         genre: "",
         author_id: ""
-    });
+    };
+    const [inputValues, setInputValues] = useState(initialValues);
     const { loading, error, data } = useQuery(getAuthorsQuery);
     const [addBook] = useMutation(addBookMutation);
 
@@ -36,12 +41,11 @@ const AddBookForm = () => {
         e.preventDefault();
 
         console.log("inputValues: ", inputValues);
-        addBook({ variables: { ...inputValues } });
-        setInputValues({
-            name: "",
-            genre: "",
-            author_id: ""
+        addBook({
+            variables: { ...inputValues },
+            refetchQueries: [{ query: getBooksQuery }] // refetching b/c express doesn't support subscriptions
         });
+        setInputValues({ ...initialValues });
     };
 
     return (
