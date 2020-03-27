@@ -16,8 +16,6 @@ const BookList = () => {
                 return (
                     <li key={book.id} onClick={e => setSelectedBookId(book.id)}>
                         {book.name}
-                        {/* <p>{book.name}</p> */}
-                        {/* <BookDetails bookId={selectedBookId} /> */}
                     </li>
                 );
             });
@@ -27,7 +25,9 @@ const BookList = () => {
     return (
         <div>
             <ul id="book-list">{displayBooks()}</ul>
-            <BookDetails bookId={selectedBookId} />
+            <section className="book-details">
+                <BookDetails bookId={selectedBookId} />
+            </section>
         </div>
     );
 };
