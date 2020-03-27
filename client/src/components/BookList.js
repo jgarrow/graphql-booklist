@@ -12,9 +12,18 @@ const BookList = () => {
         if (loading) {
             return <h2>Loading books...</h2>;
         } else {
-            return data.books.map(book => {
+            return data.books.map((book, index) => {
                 return (
-                    <li key={book.id} onClick={e => setSelectedBookId(book.id)}>
+                    <li
+                        key={book.id}
+                        tabIndex={index + 1}
+                        onClick={e => setSelectedBookId(book.id)}
+                        onKeyPress={e => {
+                            if (e.key === "Enter") {
+                                setSelectedBookId(book.id);
+                            }
+                        }}
+                    >
                         {book.name}
                     </li>
                 );
@@ -23,7 +32,7 @@ const BookList = () => {
     };
 
     return (
-        <div>
+        <div id="content-wrapper">
             <ul id="book-list">{displayBooks()}</ul>
             <section className="book-details">
                 <BookDetails bookId={selectedBookId} />

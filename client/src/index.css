@@ -1,9 +1,10 @@
 body {
     margin: 0;
     background-color: #eee;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
+        "Helvetica Neue", sans-serif; */
+    font-family: "Nunito", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -27,6 +28,7 @@ code {
 
 #book-list {
     padding: 0;
+    text-align: center;
 }
 
 #book-list li {
@@ -49,11 +51,11 @@ code {
 
 form {
     background: #fff;
-    padding: 20px;
+    padding: 20px 40px;
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 400px;
+    width: auto;
 }
 
 form .field {
