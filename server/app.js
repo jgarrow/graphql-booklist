@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const mongoConnection = process.env.MONGO_DB_CONNECTION;
-const port = 4000;
+const port = process.env.PORT || 4000;
 const server = express();
 
 server.use(cors());
